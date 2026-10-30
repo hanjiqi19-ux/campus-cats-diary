@@ -3,9 +3,10 @@
   'use strict';
   const STORAGE = 'campus-cats-v1';
   const browserAdapter = CampusBrowser.createAdapter(STORAGE);
+  const storeOptions = {assetBase:'assets/'};
   let store;
-  try { store = CampusCats.createStore(browserAdapter); }
-  catch (error) { browserAdapter.allowSession(); store = CampusCats.createStore(browserAdapter); }
+  try { store = CampusCats.createStore(browserAdapter, storeOptions); }
+  catch (error) { browserAdapter.allowSession(); store = CampusCats.createStore(browserAdapter, storeOptions); }
   const ui = {feed:'hot',category:'全部',query:'',schoolTab:'cats',eventStatus:'active',eventSchool:'',profileTab:'mine',draft:{...blankDraft(),...(store.getDraft()||{})}};
   const paths = {
     home:'M3 10 12 3l9 7M5 9v12h5v-7h4v7h5V9',
